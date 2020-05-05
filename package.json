@@ -1,0 +1,22 @@
+{
+  "name": "natours",
+  "version": "1.0.0",
+  "description": "The Natours Landing Page",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonasAnn/Natours.git"
+  },
+  "author": "Ifeoma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonasAnn/Natours/issues"
+  },
+  "homepage": "https://github.com/JonasAnn/Natours#readme",
+  "devDependencies": {
+    "node-sass": "^4.14.0"
+  }
+}
