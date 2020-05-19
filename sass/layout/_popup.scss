@@ -1,56 +1,72 @@
-.popup{
-    position: fixed;
-    background-color: rgba($color-black, 0.8);
-    top: 0;
+.popup {
     height: 100vh;
     width: 100%;
-    z-index: 900;
-    visibility: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black, .8);
+    z-index: 9999;
     opacity: 0;
+    visibility: hidden;
     transition: all .3s;
 
-    &__content{
+    @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background-color: rgba($color-black, .3);
+    }
+
+    &__content {
+        @include absCenter;
+
+        width: 75%;
         background-color: $color-white;
-        color: $color-black;
         box-shadow: 0 2rem 4rem rgba($color-black, .2);
         border-radius: 3px;
-        position: absolute;
-        width: 75%;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) scale(.25);;
         display: table;
-        opacity: 0;
         overflow: hidden;
-        transition: all .4s .2s;
-    
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.25);
+        transition: all .5s .2s;
     }
-    &__left{
-        width: 33.3333%;
+
+    &__left {
+        width: 33.333333%;
         display: table-cell;
-       
     }
-    &__right{
-        width: 66.6666%;
+
+    &__right {
+        width: 66.6666667%;
         display: table-cell;
         vertical-align: middle;
         padding: 3rem 5rem;
-       
     }
-    &__img{
-        width: 100%;
 
+    &__img {
+        display: block;
+        width: 100%;
     }
-    &__text{
-        font-size: 1.5rem;
-        margin-bottom: 3.5rem;
+
+    &__text {
+        font-size: 1.4rem;
+        margin-bottom: 4rem;
+
+        -moz-column-count: 2;
+        -moz-column-gap: 4rem; //1em = 14px;
+        -moz-column-rule: 1px solid $color-grey-light-2;
+
         column-count: 2;
-        column-gap: 4em; //1em = 14px;
+        column-gap: 4rem; //1em = 14px;
         column-rule: 1px solid $color-grey-light-2;
+
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
         hyphens: auto;
     }
-     //Open states
-     &:target {
+
+    //Open states
+    &:target {
         opacity: 1;
         visibility: visible;
     }
@@ -71,12 +87,11 @@
             text-decoration: none;
             display: inline-block;
             transition: all .2s;
-            
+            line-height: 1;
         }
 
         &:hover {
             color: $color-primary;
         }
     }
-
 }
