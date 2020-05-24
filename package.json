@@ -1,22 +1,27 @@
 {
   "name": "natours",
   "version": "1.0.0",
-  "description": "The Natours Landing Page",
+  "description": "Landing page for natours",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+    "watch:sass": "node-sass sass/main.scss css/style.css -w",
+    "devserver": "live-server",
+    "start": "npm-run-all --parallel devserver watch:sass",
+    "compile:sass": "node-sass sass/main.scss css/style.comp.css",
+    "prefix:css": "postcss css/style.css --use=autoprefixer --output=css/style.prefix.css",
+    "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
+    "build": "npm-run-all compile:sass prefix:css compress:css"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JonasAnn/Natours.git"
-  },
-  "author": "Ifeoma",
+  "browserslist": [
+    "last 5 versions"
+  ],
+  "author": "Jonas",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JonasAnn/Natours/issues"
-  },
-  "homepage": "https://github.com/JonasAnn/Natours#readme",
   "devDependencies": {
-    "node-sass": "^4.14.0"
+    "autoprefixer": "^7.2.6",
+    "concat": "^1.0.3",
+    "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
+    "postcss-cli": "^4.1.1"
   }
 }
